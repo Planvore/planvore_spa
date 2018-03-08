@@ -83,7 +83,14 @@ AWS_S3_OBJECT_PARAMETERS = {
 
 # STATIC
 # ------------------------
+STATICFILES_DIRS = [
+    os.path.join(ROOT_DIR, 'static'),
+    os.path.join(ROOT_DIR, 'assets'),
+]
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 
 # MEDIA
 # ------------------------------------------------------------------------------

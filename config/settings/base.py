@@ -101,11 +101,9 @@ REST_FRAMEWORK = {
 # WEBPACK CONFIG FOR REACT
 WEBPACK_LOADER = {
     'DEFAULT': {
-        'CACHE': not DEBUG,
-        'BUNDLE_DIR_NAME': 'bundles/', # must end with slash
-        'STATS_FILE': os.path.join(CONFIGUR_DIR, 'webpack-stats.json'),
-        'POLL_INTERVAL': 0.1,
-        'TIMEOUT': None,
+        'CACHE': DEBUG,
+        'BUNDLE_DIR_NAME': 'bundles/',  # must end with slash
+        'STATS_FILE': os.path.join(ROOT_DIR, 'webpack-stats.dev.json'),
         'IGNORE': ['.+\.hot-update.js', '.+\.map']
     }
 }
