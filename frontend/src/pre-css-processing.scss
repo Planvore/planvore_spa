@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+
+$div-bg-color: rgb(34, 34, 34);
+
+.app {
+  text-align: center;
+}
+
+.app-logo {
+  animation: app-logo-spin infinite 2s linear;
+  height: 80px;
+}
+
+.app-header {
+  background-color: $div-bg-color;
+  color: #fff;
+  height: 15rem;
+  padding: 1.5rem;
+}
+
+.app-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes app-logo-spin {
+  from { transform: rotate(0deg) ; }
+  to { transform: rotate(360deg); }
+}
+
+.socialmedia {
+  margin-top: 5rem;
+}
