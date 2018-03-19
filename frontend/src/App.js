@@ -1,47 +1,97 @@
-
-import React, { Component } from 'react';
+import React from 'react';
 import { hot } from 'react-hot-loader';
-import {Route, Switch, BrowserRouter} from 'react-router-dom';
+import ReactDOM from 'react-dom';
+import './css/index.css';
+import './css/App.scss';
+import { Button, Input, List } from 'semantic-ui-react';
 
-import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
-
-import ponyApp from "./reducers";
-
-// import PonyNote from "./components/PonyNote";
-// import NotFound from "./components/NotFound";
-
-import { Jumbotron, Container } from 'reactstrap';
-
-let store = createStore(ponyApp, applyMiddleware(thunk));
-//
-// class App extends Component {
-//     render() {
-//         return (
-//             <Provider store={store}>
-//                 <BrowserRouter>
-//                     <Switch>
-//                         <Route exact path="/" component={PonyNote} />
-//                         <Route component={NotFound} />
-//                     </Switch>
-//                 </BrowserRouter>
-//             </Provider>
-//         );
-//     }
-// }
-
-const Example = (props) => {
-  return (
-    <div>
-      <Jumbotron fluid>
-        <Container fluid>
-          <h1 className="display-3">React Jumbotron Test Live Reloading</h1>
-          <p className="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-        </Container>
-      </Jumbotron>
-    </div>
-  );
+let app = {
+    title: 'Planvooore',
+    subtitle: 'Brasil',
+    options: []
 };
 
-export default hot(module)(Example)
+const onFormSubmit = (e) => {
+    e.preventDefault();
+    console.log('Form submited!')
+
+    const option = e.target.elements.option.value;
+    if (option) {
+        app.options.push(option);
+        e.target.elements.option.value = '';
+        uprender();
+    }
+};
+
+const removeAll = () => {
+    app.options = [];
+    uprender();
+};
+
+const makeDecision = () => {
+  const randomNum = Math.floor(Math.random() * app.options.length);
+  const option = app.options[randomNum];
+  alert(option);
+};
+
+
+let visibility = false;
+
+const toggleVisibility = () => {
+  visibility = !visibility;
+  uprender();
+};
+
+const uprender = () => {
+    const template = (
+      <div className="app">
+      <div>
+        <header className="app-header">
+              <h1 className="app-title">{app.title}</h1>
+              <p className="app-intro">
+              This is a pilot React application.
+              </p>
+         </header>
+
+      </div>
+        <div>
+          <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
+          <List bulleted>
+              {app.options.map((option) => { return <List.Item key={option}>{option}</List.Item>; }) }
+          </List>
+
+            <form onSubmit={onFormSubmit}>
+              <Input type="text" name="option" placeholder="Add text..."/>
+              <p></p>
+              <Button content="Add Option"/>
+              <Button color='red' onClick={removeAll} content="Remove all"/>
+              <Button disabled={app.options.length === 0} color='green' onClick={makeDecision} content="Decide for me!"/>
+            </form>
+        </div>
+
+          <div className="socialmedia">
+            <Button circular color='facebook' icon='facebook'/>
+            <Button circular color='twitter' icon='twitter'/>
+            <Button circular color='linkedin' icon='linkedin'/>
+            <Button circular color='google plus' icon='google plus'/>
+          </div>
+
+        <div>
+          <p></p>
+          <h1>Toggle Visibility</h1>
+          <Button onClick={toggleVisibility} color="blue" toggle content={ visibility ? "Hide Details" : "See details" } />
+          { visibility && (
+            <div>
+            <p>This is the details that were hidden!</p>
+            </div>
+          )}
+        </div>
+
+      </div>
+    );
+
+    ReactDOM.render(template, document.getElementById('root'));
+
+};
+
+export default hot(module)(uprender())
