@@ -387,3 +387,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+/planvore_spa/users/migrations/
+!/static/semantic/dist/
