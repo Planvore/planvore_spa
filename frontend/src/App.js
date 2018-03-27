@@ -1,9 +1,10 @@
 import React from 'react';
-import { hot } from 'react-hot-loader';
 import ReactDOM from 'react-dom';
-import './css/index.css';
-import './css/App.scss';
+import { hot } from 'react-hot-loader';
+import './static/index.css';
+import './static/App.scss';
 import { Button, Input, List } from 'semantic-ui-react';
+import "semantic-ui-less/semantic.less";
 
 let app = {
     title: 'Planvooore',

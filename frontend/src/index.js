@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './css/index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import 'bootstrap/dist/css/bootstrap.css';
-
+import "semantic-ui-less/semantic.less";
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
