@@ -45,6 +45,7 @@
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "resolve-url-loader": "^2.3.0",
     "run-sequence": "^2.1.1",
     "semantic-ui": "^2.3.1",
     "semantic-ui-less": "^2.3.1",
@@ -73,8 +74,10 @@
     "load-grunt-tasks": "~3.2.0",
     "pixrem": "~4.0.1",
     "popper.js": "^1.12.3",
+    "postcss-smart-import": "^0.7.6",
     "react-hot-loader": "^4.0.0",
     "react-redux": "^5.0.7",
+    "sass-loader": "^6.0.7",
     "time-grunt": "~1.2.1",
     "url-loader": "^0.5.9"
   },

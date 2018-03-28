@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { hot } from 'react-hot-loader';
 import './static/index.css';
-import './static/App.scss';
+// import './static/App.scss';
 import { Button, Input, List } from 'semantic-ui-react';
 import "semantic-ui-less/semantic.less";
 

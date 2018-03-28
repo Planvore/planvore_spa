@@ -1,5 +1,7 @@
 'use strict';
 
+const autoprefixer = require('autoprefixer');
+const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -11,6 +13,7 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
 const BundleTracker = require('webpack-bundle-tracker');
+
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.

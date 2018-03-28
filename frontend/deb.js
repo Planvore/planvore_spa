@@ -1,5 +1,5 @@
 'use strict';
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
@@ -12,11 +12,7 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const BundleTracker = require('webpack-bundle-tracker');
-const fs = require('fs');
 
-const appDirectory = fs.realpathSync(process.cwd());
-const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
-const semanticTheme = resolveApp('./frontend/src/static/ui-theme/theme.config');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -95,11 +91,8 @@ module.exports = {
 
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-        'react-native': 'react-native-web',
-
-        '../../theme.config$': semanticTheme,
+      'react-native': 'react-native-web',
     },
-
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).
       // This often causes confusion because we only process files within src/ with babel.
@@ -112,7 +105,7 @@ module.exports = {
   module: {
     strictExportPresence: true,
     rules: [
-  // TODO: Disable require.ensure as it's not a standard language feature.
+      // TODO: Disable require.ensure as it's not a standard language feature.
       // We are waiting for https://github.com/facebookincubator/create-react-app/issues/2176.
       // { parser: { requireEnsure: false } },
 
@@ -200,21 +193,6 @@ module.exports = {
               },
             ],
           },
-
-
-
-            {
-                  test: /\.jpe?g$|\.gif$|\.png$|\.ttf$|\.eot$|\.svg$/,
-                  use: 'file-loader?name=[name].[ext]?[hash]'
-                },
-
-            {
-                  test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                  loader: 'url-loader?limit=10000&mimetype=application/fontwoff'
-                },
-
-
-
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.
           // In production, they would get copied to the `build` folder.
@@ -270,15 +248,6 @@ module.exports = {
     // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
     // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-
-       new ExtractTextPlugin({
-      filename: '[name].[contenthash].css'
-    }),
-
-
-
-
-
     new BundleTracker({path: paths.statsRoot, filename: 'webpack-stats.dev.json'}),
   ],
   // Some libraries import Node modules but don't use them in the browser.
