@@ -18,4 +18,31 @@ Issues with the above approach:
 3. Really Unforgiving: No way to override this behavior
 4. Undocumented: No mention in the documentation, or it's too hard for me to find
 */
-$('.form-group').removeClass('row');
+// $('.form-group').removeClass('row');
+
+
+$("#navbarui, a").hover(
+    function() {
+        $(this).addClass('active');
+    }, function() {
+        $( this ).removeClass('active');
+    }
+);
+$("#navbarui, a").click(function(){
+        $(this).toggleClass('active');
+});
+//
+//
+//
+// $("#navbarui").scroll(
+//     function () {
+//     if ($(window).scrollTop() <= 100)
+//         $('#navbarui').addClass('transparent');
+//         $('#navbarui').removeClass('inverted');
+//     }, else function() {
+//         $('#navbarui').removeClass('inverted');
+//         $('#navbarui').removeClass('transparent');
+//     }
+// );
+//
+
