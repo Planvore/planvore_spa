@@ -7,7 +7,7 @@ import { Button, Input, List } from 'semantic-ui-react';
 import "semantic-ui-less/semantic.less";
 
 let app = {
-    title: 'Planvooore',
+    title: 'PLANVORE OK',
     subtitle: 'Brasil',
     options: []
 };

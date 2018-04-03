@@ -1,17 +1,20 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load semanticui %}
 
 {% block title %}{{ user.username }}{% endblock %}
 
 {% block content %}
+  <div class="ui-form">
   <h1>{{ user.username }}</h1>
   <form class="form-horizontal" method="post" action="{% url 'users:update' %}">
     {% csrf_token %}
-    {{ form|crispy }}
+    {% render_form form %}
     <div class="control-group">
       <div class="controls">
-        <button type="submit" class="btn">Update</button>
+        <button type="submit" class="ui red button">Update</button>
       </div>
     </div>
+  </div>
   </form>
 {% endblock %}
